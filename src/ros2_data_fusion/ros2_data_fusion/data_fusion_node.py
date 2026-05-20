@@ -35,7 +35,8 @@ def get_pitch_point_2_point_NED(current, target):
     d_alt = target['alt'] - current['alt']
 
     horizontal = math.sqrt(d_north ** 2 + d_east ** 2)
-    return math.degrees(math.atan2(d_alt, horizontal))
+    # NED: 往上=负，往下=正，与 IMU 一致
+    return -math.degrees(math.atan2(d_alt, horizontal))
 
 
 def wrap_angle(angle):
