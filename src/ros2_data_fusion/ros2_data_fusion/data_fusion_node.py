@@ -103,8 +103,8 @@ class DataFusionNode(Node):
         self.declare_parameter('yaw_min_vel_steady', 0.0)
         self.declare_parameter('steady_window_size', 50)
         self.declare_parameter('steady_entry_threshold_deg', 0.15)
-        self.declare_parameter('steady_exit_threshold_deg', 0.65)
-        self.declare_parameter('steady_exit_count', 11)
+        self.declare_parameter('steady_exit_threshold_deg', 0.8)
+        self.declare_parameter('steady_exit_count', 33)
 
         self.error_history = deque(maxlen=self.get_parameter('steady_window_size').value)
         self.exit_count = 0  # 连续超阈值计数(退出用)
