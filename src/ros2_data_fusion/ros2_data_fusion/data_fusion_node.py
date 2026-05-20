@@ -99,7 +99,7 @@ class DataFusionNode(Node):
         # 目标俯仰角限幅
         self.declare_parameter('target_pitch_limit_deg', 45.0)
 
-        self.declare_parameter('yaw_kp_steady', 0.08)
+        self.declare_parameter('yaw_kp_steady', 0.01)
         self.declare_parameter('yaw_deadband_steady_deg', 0.5)
         self.declare_parameter('yaw_min_vel_steady', 0.0)
         self.declare_parameter('steady_window_size', 50)
