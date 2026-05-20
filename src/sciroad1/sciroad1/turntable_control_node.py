@@ -33,23 +33,23 @@ class GimbalControlNode(Node):
         args = config.args
         self.gimbal = SamplePitchand200RotationBase(args)
 
-        #self.init_gimbal()
+        self.init_gimbal()
 
         # ========= 参数 =========
-        self.declare_parameter('acc', 8.0)
+        self.declare_parameter('acc', 6.0)
         self.declare_parameter('dec', 6.0)
         self.declare_parameter('vel', 10.0)
 
         # 最终允许的最大控制角速度（deg/s）
         self.declare_parameter('vel_limit_yaw', 10)
-        self.declare_parameter('vel_limit_pitch', 4)
+        self.declare_parameter('vel_limit_pitch', 5)
 
         # 控制周期：50Hz
-        self.declare_parameter('control_dt', 0.3)
+        self.declare_parameter('control_dt', 0.2)
 
         # 极小位移不执行，减少抖动和异响
-        self.declare_parameter('min_step_yaw_deg', 0.08)
-        self.declare_parameter('min_step_pitch_deg', 0.15)
+        self.declare_parameter('min_step_yaw_deg', 0.02)
+        self.declare_parameter('min_step_pitch_deg', 0.1)
 
         self.acc = float(self.get_parameter('acc').value)
         self.dec = float(self.get_parameter('dec').value)
@@ -63,7 +63,7 @@ class GimbalControlNode(Node):
         self.min_step_yaw_deg = float(self.get_parameter('min_step_yaw_deg').value)
         self.min_step_pitch_deg = float(self.get_parameter('min_step_pitch_deg').value)
 
-        #self.set_motion_param()
+        self.set_motion_param()
 
         # ========= 状态 =========
         self.last_cmd_time = time.time()
